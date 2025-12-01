@@ -391,7 +391,7 @@
     </main>
 
     <footer>
-        <p>麥當勞點餐系統 V4.9.2 (Kanit 字體更新)</p>
+        <p>麥當勞點餐系統 V4.9.3 (中薯條/大薯條 & 加購選項修正)</p>
     </footer>
 
     <script>
@@ -532,12 +532,11 @@
             { name: '咖啡 - 熱 (HOT COFFEE)', items: menuData['DRINKS'].filter(d => d.subCategory === 'HOT COFFEE') }
         ];
 
+        // V4.9.3 修正: 移除新地和新地筒
         const SIDE_CATEGORIES = [
             { name: '其他配餐/甜品', items: [
                 { name: '朱古力肉桂迷你脆條', code: 'Choc_Cinn_Stick', price: 18.00 },
                 { name: '蘋果批', code: 'Apple_Pie', price: 11.00 },
-                { name: '新地 (Oreo/士多啤梨/朱古力) - 需手動調整', code: 'Sundae', price: 12.50 }, 
-                { name: '新地筒', code: 'Cone', price: 8.50 },
                 { name: '沙律醬/汁 (凱撒/焙煎芝麻/黑醋)', code: 'Sauce', price: 4.00 }
             ]},
             { name: '脆香雞翼', items: [
@@ -956,8 +955,9 @@
                     currentOrder.sideItem = { name: '無', price: 0, code: '' }; 
                     currentOrder.extraSides = [];
                     
-                    // 2. 調用配餐選擇流程 (使用標準薯條 M 作為預設)
-                    const sideItemDefaultName = '標準薯條 M';
+                    // 2. 調用配餐選擇流程 (使用中薯條 M 作為預設)
+                    // V4.9.3 修正: 名稱改為 '中薯條'
+                    const sideItemDefaultName = '中薯條';
                     const sideItemDefaultCode = 'Fries_M';
                     
                     // 傳遞 isHappyMeal = true，讓 selectSide 完成後不自動進入 selectDrink
@@ -1026,8 +1026,9 @@ ${maxSetDisplay}\n
                 
                 if (isSet || isMaxSet) {
                     
+                    // V4.9.3 修正: 名稱改為 '中薯條' / '大薯條'
                     const sideItemDefaultCode = isMaxSet ? 'Fries_L' : 'Fries_M';
-                    const sideItemDefaultName = isMaxSet ? '大薯條 L' : '標準薯條 M';
+                    const sideItemDefaultName = isMaxSet ? '大薯條' : '中薯條';
                     
                     // 1. 配餐替換/升級/加購 (數字化流程)
                     // 一般套餐：isHappyMeal = false (或不傳遞)
@@ -1174,6 +1175,7 @@ ${maxSetDisplay}\n
             
             // V4.5: 檢查並顯示當前配餐狀態
             let baseSideSelected = currentOrder.sideItem.name !== '無';
+            // V4.9.3 修正: 使用最新的中/大薯條名稱
             let currentSideDisplay = baseSideSelected ? currentOrder.sideItem.name : defaultName;
             const currentUpgradeFee = isNaN(currentOrder.sideItem.price) ? 0.00 : currentOrder.sideItem.price;
 
@@ -1257,7 +1259,8 @@ ${maxSetDisplay}\n
                 // 顯示薯條升級選項 (編號 1)
                 const isFriesUpgradeAvailable = (currentOrder.sideItem.code === 'Fries_M' || currentOrder.sideItem.code === 'Corn');
                 if (isFriesUpgradeAvailable) {
-                    upgradePrompt += `1. 薯條升級至 L (費用: +HK$${friesCost.toFixed(2)})\n`;
+                    // V4.9.3 修正: 名稱改為 '大薯條'
+                    upgradePrompt += `1. 薯條升級至 大薯條 (費用: +HK$${friesCost.toFixed(2)})\n`;
                 }
 
                 // 顯示其他加購選項
@@ -1285,8 +1288,9 @@ ${maxSetDisplay}\n
                     let finalPrice = LARGE_SIDE_VALUE - baseValue;
                     if (finalPrice < 0) finalPrice = 0.00;
                     
-                    currentOrder.sideItem = { name: '大薯條 L', price: finalPrice, code: 'Fries_L' };
-                    alert(`配餐已升級至 大薯條 L。升級費用: +HK$${finalPrice.toFixed(2)}。`);
+                    // V4.9.3 修正: 名稱改為 '大薯條'
+                    currentOrder.sideItem = { name: '大薯條', price: finalPrice, code: 'Fries_L' };
+                    alert(`配餐已升級至 大薯條。升級費用: +HK$${finalPrice.toFixed(2)}。`);
                     
                 } else if (upgradeNum >= (isFriesUpgradeAvailable ? 2 : 1) && upgradeNum <= SIDE_CATEGORIES.length + (isFriesUpgradeAvailable ? 1 : 0)) {
                     // 額外加購類別
@@ -1407,6 +1411,14 @@ ${maxSetDisplay}\n
                          if (order.sideItem.code === 'Corn_Cup') {
                             order.sideItem.code = 'Corn';
                             order.sideItem.name = '粒粒粟米杯';
+                         }
+                         
+                         // V4.9.3 兼容性檢查: 將舊的 標準薯條 M / 大薯條 L 替換為新名稱
+                         if (order.sideItem.name === '標準薯條 M' || order.sideItem.name === '中薯條 M') {
+                             order.sideItem.name = '中薯條';
+                         }
+                         if (order.sideItem.name === '大薯條 L') {
+                             order.sideItem.name = '大薯條';
                          }
                         
                         // 處理舊版數據中將單點加入 sideItem 的情況
