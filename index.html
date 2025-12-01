@@ -1,0 +1,1452 @@
+<!DOCTYPE html>
+<html lang="zh-HK">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>祝賀Tom 🤵 & Jackie 👰 新婚快樂 白頭偕老</title>
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght=700&display=swap" rel="stylesheet">
+    <style>
+        /* CSS V4.9.2 - Kanit 字體更新 */
+        :root {
+            --mcd-red: #C00000;
+            --mcd-yellow: #FFC72C;
+            --mcd-light-yellow: #FFF8E1;
+            --mcd-dark: #333333;
+            --mcd-light: #F8F8F8;
+            --mcd-shadow: 0 4px 12px rgba(0, 0, 0, 0.15); 
+            --mcd-premium-yellow: #FFD700; 
+            --mcd-background-img: url('wedding_background.jpg'); 
+        }
+
+        body {
+            /* 預設字體也加入 Kanit 作為備用 */
+            font-family: 'Helvetica Neue', Arial, sans-serif, 'Kanit', 'sans-serif'; 
+            margin: 0;
+            padding: 0;
+            color: var(--mcd-dark);
+            line-height: 1.6;
+            
+            background-image: var(--mcd-background-img); 
+            background-size: cover; 
+            background-attachment: fixed; 
+            background-position: center center; 
+            background-color: #e0e0e0; 
+        }
+
+        #banner-container {
+            width: 100%;
+            height: 300px; 
+            overflow: hidden; 
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4); 
+        }
+
+        #banner-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover; 
+            display: block;
+            object-position: 50% 55%; 
+        }
+
+        #greeting {
+            background-color: var(--mcd-red);
+            color: white;
+            padding: 20px 20px;
+            text-align: center;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+            margin-bottom: 20px; 
+        }
+
+        #greeting h1 {
+            margin: 0;
+            font-size: 2.5em; 
+            letter-spacing: 2px;
+            /* V4.9.2 修正：使用 Kanit 字體 */
+            font-family: 'Kanit', sans-serif; 
+            font-weight: 700;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
+            line-height: 1.3; 
+        }
+
+        main {
+            display: flex;
+            flex-wrap: wrap;
+            padding: 0 20px 40px 20px; 
+            gap: 25px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        section {
+            background-color: white; 
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: var(--mcd-shadow);
+            transition: transform 0.3s ease;
+            border: 1px solid #ddd; 
+        }
+
+        section h2 {
+            color: var(--mcd-red);
+            border-bottom: 3px solid var(--mcd-yellow);
+            padding-bottom: 10px;
+            margin-top: 0;
+            margin-bottom: 20px;
+            font-size: 1.5em;
+        }
+
+        #controls {
+            flex-basis: 100%;
+            padding: 0; 
+            border: none;
+            background: linear-gradient(135deg, var(--mcd-yellow) 0%, var(--mcd-premium-yellow) 50%, var(--mcd-yellow) 100%);
+            padding: 3px; 
+            border-radius: 15px; 
+        }
+
+        #controls-content {
+            padding: 25px 25px 20px 25px;
+            border-radius: 12px;
+            background-color: white;
+        }
+
+        #menu {
+            flex: 1 1 350px;
+            min-width: 300px;
+            order: 1;
+        }
+
+        #order-list {
+            flex: 3 1 700px;
+            order: 2;
+        }
+
+        @media (max-width: 900px) {
+            #menu {
+                flex-basis: 100%;
+                order: 2; 
+            }
+            #order-list {
+                flex-basis: 100%;
+                order: 1; 
+            }
+        }
+
+        .menu-category-title {
+            color: var(--mcd-dark);
+            margin-top: 20px;
+            margin-bottom: 0;
+            border-left: 5px solid var(--mcd-red);
+            padding: 10px 0 10px 10px;
+            font-size: 1.2em;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #f7f7f7;
+            border-radius: 4px; 
+            transition: background-color 0.15s;
+        }
+
+        .menu-category-title:hover {
+            background-color: var(--mcd-light-yellow);
+        }
+
+        .menu-category-title::after {
+            content: '▼';
+            margin-right: 10px;
+            transition: transform 0.2s;
+        }
+
+        .menu-category-title.expanded::after {
+            transform: rotate(180deg);
+        }
+
+        .menu-category-content {
+            max-height: 0; 
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+            padding: 0 10px;
+            border: 1px solid #e0e0e0;
+            border-top: none;
+            border-radius: 0 0 4px 4px;
+        }
+
+        .menu-category-content.expanded {
+            overflow-y: auto; 
+            max-height: 1000px; 
+            padding-bottom: 10px;
+        }
+
+        .menu-sub-toggle {
+            color: var(--mcd-dark);
+            font-size: 1.1em;
+            margin: 15px 0 0 0;
+            padding: 8px 10px;
+            background-color: #e9e9e9;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-radius: 4px;
+            border-left: 3px solid var(--mcd-yellow);
+            font-weight: bold;
+        }
+
+        .menu-sub-toggle:hover {
+            background-color: #e0e0e0;
+        }
+
+        .menu-sub-toggle::after {
+            content: '▶';
+            font-size: 0.8em;
+            transition: transform 0.2s;
+        }
+
+        .menu-sub-toggle.expanded::after {
+            transform: rotate(90deg);
+        }
+
+        .menu-sub-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+            padding: 0 10px;
+            border-left: 1px solid #e0e0e0;
+            margin-bottom: 10px;
+        }
+
+        .menu-sub-content.expanded {
+            max-height: 1000px; 
+        }
+
+        .menu-item {
+            padding: 12px 5px;
+            margin-bottom: 5px;
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            cursor: pointer;
+            background-color: #ffffff;
+            transition: background-color 0.15s, transform 0.1s;
+        }
+
+        .menu-item:hover {
+            background-color: var(--mcd-light-yellow);
+            border-color: var(--mcd-yellow);
+            transform: translateY(-2px);
+        }
+        
+        /* V4.9.1 修正：點擊時的反饋效果 */
+        .menu-item:active {
+            transform: translateY(1px); 
+            box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1); 
+            background-color: #ffefb8; 
+        }
+
+        .menu-item strong {
+            display: block;
+            font-size: 1.1em;
+            margin-bottom: 3px;
+        }
+
+        .menu-item strong .item-code {
+            color: var(--mcd-red);
+            font-size: 0.8em;
+            margin-left: 8px;
+        }
+
+        .menu-item small {
+            color: #777;
+            font-size: 0.85em;
+        }
+
+        .menu-item small.price-red-bold {
+            color: var(--mcd-red);
+            font-weight: bold;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: separate; 
+            border-spacing: 0;
+            margin-top: 10px;
+        }
+
+        th, td {
+            padding: 12px 15px;
+            text-align: left;
+            border-bottom: 1px solid #f0f0f0;
+        }
+
+        th {
+            background-color: var(--mcd-red);
+            color: white;
+            font-weight: bold;
+            text-transform: uppercase;
+            font-size: 0.9em;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        button {
+            padding: 8px 15px;
+            background-color: var(--mcd-yellow);
+            color: var(--mcd-dark);
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: background-color 0.2s, transform 0.1s;
+        }
+
+        button:hover {
+            background-color: #ffb800; 
+            transform: translateY(-1px);
+        }
+
+        #person-select {
+            padding: 8px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            margin-right: 15px;
+            min-width: 150px;
+        }
+
+        .select-group {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        #summary {
+            margin-top: 0; 
+            padding: 15px 25px; 
+            background-color: white; 
+            border-radius: 0 0 12px 12px; 
+            box-shadow: none; 
+            color: var(--mcd-dark);
+            font-size: 1.4em;
+            text-align: right;
+            border-top: 3px solid var(--mcd-yellow); 
+        }
+
+        #total-price {
+            font-size: 1.1em;
+            color: var(--mcd-red);
+            margin-left: 10px;
+            font-weight: bold;
+        }
+
+        footer {
+            text-align: center;
+            padding: 15px;
+            color: #999;
+            font-size: 0.8em;
+        }
+    </style>
+</head>
+<body>
+    
+    <div id="banner-container">
+        <img id="banner-img" src="banner.jpg" alt="Tom & Jackie 新婚快樂">
+    </div>
+    
+    <div id="greeting">
+        <h1>祝賀Tom 🤵 & Jackie 👰<br>新婚快樂 白頭偕老</h1>
+    </div>
+
+    <main>
+        <section id="controls">
+            <div id="controls-content">
+                <h2>🎯 分配訂單</h2>
+                <div class="select-group">
+                    <label for="person-select" style="font-weight: bold;">選擇訂餐人：</label>
+                    <select id="person-select"></select>
+                    <button id="add-order-btn" style="margin-left: 15px;">
+                        + 新增訂餐人
+                    </button>
+                </div>
+                <p style="margin-top: 15px; color: #555;">步驟： 1. 選擇訂餐人 (或新增) → 2. 在右邊菜單點選項目 → 3. 彈出視窗完成單點/套餐/升級選擇。</p>
+            </div>
+            
+            <div id="summary">
+                總計金額：<span id="total-price">HK$ 0.00</span>
+            </div>
+        </section>
+        
+        <section id="menu">
+            <h2>菜單選擇</h2>
+            <div id="menu-content">
+                </div>
+        </section>
+
+        <section id="order-list">
+            <h2>📋 點餐清單</h2>
+            <div id="orders-container">
+                </div>
+        </section>
+        
+    </main>
+
+    <footer>
+        <p>麥當勞點餐系統 V4.9.2 (Kanit 字體更新)</p>
+    </footer>
+
+    <script>
+        // 固定人名列表 (初始的 14 位)
+        const INITIAL_NAMES = [
+            "Jackie", "Tom", "Priscilla", "Ice", "Charyu", "Sophia", 
+            "書翹", "Chilam", "Momo", "明暉", "東榮", "家濂", "勇", 
+            "Pata"
+        ];
+        
+        let PERSON_NAMES = [...INITIAL_NAMES];
+
+        const MAX_SET_COST = 5.00; // 主餐加大費用
+        const CORN_PRICE = 15.00; // 粒粒粟米杯標準價值 
+
+        const menuData = {
+            'Promotions': [ 
+                { name: '菠蘿蒜辣蛋黃醬脆爆雞腿飽', type: 'Burger', aLaCarte: 32.50, set: 48.00 }, 
+                { name: '蒜辣蛋黃醬脆爆雞腿飽', type: 'Burger', aLaCarte: 29.50, set: 39.00 },
+                { name: '麥炸雞 (原味) (1件)', type: 'Chicken_Side', aLaCarte: 22.50, set: null, code: 'Original_Chicken_1pc' }, 
+                { name: '麥炸雞 (原味) (2件)', type: 'Chicken_Set_Main', aLaCarte: 39.50, set: 35.00 },
+                { name: '蜜糖BBQ麥炸雞 (1件)', type: 'Chicken_Side', aLaCarte: 23.50, set: null, code: 'BBQ_Chicken_1pc' }, 
+                { name: '蜜糖BBQ麥炸雞 (2件)', type: 'Chicken_Set_Main', aLaCarte: 41.50, set: 39.00 },
+                { name: '麥炸雞(原味)分享桶(6件)', type: 'Chicken_Set_Main', aLaCarte: 116.50, set: 136.50 },
+                { name: '蜜糖BBQ麥炸雞分享桶(6件)', type: 'Chicken_Set_Main', aLaCarte: 122.50, set: 142.50 },
+                { name: '原味及蜜糖BBQ麥炸雞分享桶(總共6件)', type: 'Chicken_Set_Main', aLaCarte: 122.50, set: 142.50 }
+            ],
+            'The Signature Collection': [ 
+                { name: 'Double芝士安格斯', type: 'Burger', aLaCarte: 48.50, set: 59.50 }, 
+                { name: '蘑菇安格斯', type: 'Burger', aLaCarte: 40.00, set: 54.00 },     
+                { name: '芝士安格斯', type: 'Burger', aLaCarte: 35.50, set: 49.00 }      
+            ],
+            'BURGERS': [
+                { name: '巨無霸®', type: 'Burger', aLaCarte: 25.50, set: 47.50 },
+                { name: '雙層芝士孖堡™', type: 'Burger', aLaCarte: 24.00, set: 44.00 },
+                { name: '脆辣雞腿飽', type: 'Burger', aLaCarte: 26.50, set: 47.00 },
+                { name: '脆爆雞腿飽', type: 'Burger', aLaCarte: 29.50, set: 39.00 },
+                { name: '板燒雞腿飽', type: 'Burger', aLaCarte: 28.00, set: 47.50 },
+                { name: '芝士漢堡飽', type: 'Burger', aLaCarte: 17.00, set: null },
+                { name: '漢堡飽', type: 'Burger', aLaCarte: 15.00, set: null },
+                { name: '麥香雞®', type: 'Burger', aLaCarte: 15.50, set: null },
+                { name: '魚柳飽', type: 'Burger', aLaCarte: 14.00, set: 42.50 }, 
+                { name: '豬柳蛋漢堡', type: 'Muffin', aLaCarte: 22.50, set: 30.00 },
+                { name: '豬柳漢堡', type: 'Muffin', aLaCarte: 15.50, set: 40.50 }, 
+                { name: '麥芝蛋飽', type: 'Muffin', aLaCarte: 17.00, set: null }
+            ],
+            'CHICKEN': [ 
+                { name: '麥樂雞® (6件)', type: 'Chicken_Set_Main', aLaCarte: 24.00, set: 29.00 }, 
+                { name: '麥樂雞® (9件)', type: 'Chicken_Set_Main', aLaCarte: 29.00, set: 47.00 }, 
+                { name: '脆香雞翼 (2件)', type: 'Sides', aLaCarte: 15.00, set: null, code: 'Crispy_Wings_2pc' }, 
+                { name: '脆香雞翼 (4件)', type: 'Chicken_Set_Main', aLaCarte: 27.00, set: 47.00 }, 
+                { name: '脆香雞翼分享桶 (16件)', type: 'Chicken_Set_Main', aLaCarte: 103.00, set: 134.00 } 
+            ],
+            'SALAD': [
+                { name: '凱撒沙律', type: 'Salad', aLaCarte: 34.50, set: 47.50 }, 
+                { name: '凱撒沙律醬', type: 'Dessert', aLaCarte: 4.00, set: null, code: 'Caesar_Sauce' },
+                { name: '焙煎芝麻醬', type: 'Dessert', aLaCarte: 4.00, set: null, code: 'Sesame_Sauce' },
+                { name: '黑醋調味汁', type: 'Dessert', aLaCarte: 4.00, set: null, code: 'Balsamic_Sauce' }
+            ],
+            'SIDES & DESSERTS': [
+                { name: '朱古力肉桂迷你脆條', type: 'Dessert', aLaCarte: 18.00, set: null, code: 'Choc_Cinn_Stick' }, 
+                { name: '蘋果批', type: 'Dessert', aLaCarte: 11.00, set: null, code: 'Apple_Pie' }
+            ],
+            'HAPPY MEALS': [
+                 { name: '魚柳飽', type: 'HappyMeal', aLaCarte: null, set: 36.50 },
+                 { name: '麥樂雞® (4件)', type: 'HappyMeal', aLaCarte: null, set: 34.50 },
+                 { name: '芝士漢堡飽', type: 'HappyMeal', aLaCarte: null, set: 28.50 },
+                 { name: '麥芝蛋飽', type: 'HappyMeal', aLaCarte: null, set: 28.50 }
+            ],
+            'DRINKS': [ 
+                // 冷飲 (COLD DRINKS)
+                { name: '可口可樂®汽水', type: 'Drink', aLaCarte: 17.00, set: null, subCategory: 'COLD DRINKS', code: 'Coke' },
+                { name: '雪碧®檸檬青檸味汽水', type: 'Drink', aLaCarte: 17.00, set: null, subCategory: 'COLD DRINKS', code: 'Sprite' },
+                { name: '芬達®橙味汽水', type: 'Drink', aLaCarte: 17.00, set: null, subCategory: 'COLD DRINKS', code: 'Fanta' },
+                { name: '無糖可口可樂®', type: 'Drink', aLaCarte: 17.00, set: null, subCategory: 'COLD DRINKS', code: 'Coke0' }, 
+                { name: '凍新鮮檸檬茶', type: 'Drink', aLaCarte: 21.50, set: null, subCategory: 'COLD DRINKS', code: 'C0T' }, 
+                { name: '凍港式奶茶', type: 'Drink', aLaCarte: 21.50, set: null, subCategory: 'COLD DRINKS', code: 'CMT' }, 
+                { name: '白桃梳打', type: 'Drink', aLaCarte: 23.50, set: null, subCategory: 'COLD DRINKS', code: 'Peach' }, 
+                { name: '美粒果®蘋果汁', type: 'Drink', aLaCarte: 20.00, set: null, subCategory: 'COLD DRINKS', code: 'Apple' },
+                { name: '美粒果®橙汁', type: 'Drink', aLaCarte: 17.00, set: null, subCategory: 'COLD DRINKS', code: 'Orange' }, 
+                { name: '高鈣低脂牛奶飲品', type: 'Drink', aLaCarte: 19.00, set: null, subCategory: 'COLD DRINKS', code: 'Milk' },
+                { name: '士多啤梨奶昔', type: 'Drink', aLaCarte: 18.00, set: null, subCategory: 'COLD DRINKS', code: 'SMilkS' },
+                { name: '呍呢拿奶昔', type: 'Drink', aLaCarte: 18.00, set: null, subCategory: 'COLD DRINKS', code: 'VMilkS' },
+
+                // 熱飲 (HOT DRINKS)
+                { name: '熱港式奶茶', type: 'Drink', aLaCarte: 18.50, set: null, subCategory: 'HOT DRINKS', code: 'MT' }, 
+                { name: '熱朱古力', type: 'Drink', aLaCarte: 18.50, set: null, subCategory: 'HOT DRINKS', code: 'HotC' },
+                { name: '熱新鮮檸檬茶', type: 'Drink', aLaCarte: 18.50, set: null, subCategory: 'HOT DRINKS', code: '0T' }, 
+                { name: '熱新鮮檸檬水', type: 'Drink', aLaCarte: 18.50, set: null, subCategory: 'HOT DRINKS', code: '0W' }, 
+                
+                // 咖啡 - 冰 (ICED COFFEE)
+                { name: '凍即磨黑咖啡', type: 'Drink', aLaCarte: 19.00, set: null, subCategory: 'ICED COFFEE', code: 'ICB' }, 
+                { name: '凍即磨鮮奶咖啡', type: 'Drink', aLaCarte: 19.00, set: null, subCategory: 'ICED COFFEE', code: 'ICL' }, 
+                { name: '厚椰奶鐵', type: 'Drink', aLaCarte: 36.00, set: null, subCategory: 'ICED COFFEE', code: 'ICCT' }, 
+                { name: '凍即磨白咖啡', type: 'Drink', aLaCarte: 34.50, set: null, subCategory: 'ICED COFFEE', code: 'ICF' }, 
+                
+                // 咖啡 - 熱 (HOT COFFEE)
+                { name: '熱朱古力咖啡', type: 'Drink', aLaCarte: 16.00, set: null, subCategory: 'HOT COFFEE', code: 'HC' }, 
+                { name: '即磨黑咖啡', type: 'Drink', aLaCarte: 16.00, set: null, subCategory: 'HOT COFFEE', code: 'HB' }, 
+                { name: '即磨鮮奶咖啡', type: 'Drink', aLaCarte: 16.00, set: null, subCategory: 'HOT COFFEE', code: 'HL' }, 
+                { name: '椰香鮮奶咖啡', type: 'Drink', aLaCarte: 25.00, set: null, subCategory: 'HOT COFFEE', code: 'HCL' }, 
+                { name: '即磨白咖啡', type: 'Drink', aLaCarte: 24.50, set: null, subCategory: 'HOT COFFEE', code: 'HF' } 
+            ]
+        };
+
+        const STANDARD_DRINK_VALUE = 10.00; 
+        const STANDARD_SIDE_VALUE = 15.00; // 中薯條 M (Fries_M) 的標準價值
+        const LARGE_SIDE_VALUE = 20.00; // 大薯條 L (Fries_L) 的標準價值
+        const CORN_PRICE_VALUE = 15.00; // 粒粒粟米杯標準價值 
+
+        const drinkPrices = {}; 
+        menuData['DRINKS'].forEach(item => {
+             if (item.code) drinkPrices[item.code] = item.aLaCarte;
+        });
+
+
+        const sidePrices = {
+            'Fries_M': STANDARD_SIDE_VALUE, 
+            'Fries_L': LARGE_SIDE_VALUE, 
+            'Corn': CORN_PRICE_VALUE, 
+            'Choc_Cinn_Stick': 18.00, 
+            'Apple_Pie': 11.00, 
+            'Milo_Sundae': 12.50, 
+            'Cone': 8.50, 
+            'Straw_Sundae': 12.00,
+            'Caesar_Sauce': 4.00,
+            'Sesame_Sauce': 4.00,
+            'Balsamic_Sauce': 4.00,
+            'Original_Chicken_1pc': 22.50, 
+            'BBQ_Chicken_1pc': 23.50,
+            'Crispy_Wings_2pc': 15.00 
+        };
+        
+        const DRINK_CATEGORIES = [
+            { name: '冷飲 (COLD DRINKS)', items: menuData['DRINKS'].filter(d => d.subCategory === 'COLD DRINKS') },
+            { name: '熱飲 (HOT DRINKS)', items: menuData['DRINKS'].filter(d => d.subCategory === 'HOT DRINKS') },
+            { name: '咖啡 - 冰 (ICED COFFEE)', items: menuData['DRINKS'].filter(d => d.subCategory === 'ICED COFFEE') },
+            { name: '咖啡 - 熱 (HOT COFFEE)', items: menuData['DRINKS'].filter(d => d.subCategory === 'HOT COFFEE') }
+        ];
+
+        const SIDE_CATEGORIES = [
+            { name: '其他配餐/甜品', items: [
+                { name: '朱古力肉桂迷你脆條', code: 'Choc_Cinn_Stick', price: 18.00 },
+                { name: '蘋果批', code: 'Apple_Pie', price: 11.00 },
+                { name: '新地 (Oreo/士多啤梨/朱古力) - 需手動調整', code: 'Sundae', price: 12.50 }, 
+                { name: '新地筒', code: 'Cone', price: 8.50 },
+                { name: '沙律醬/汁 (凱撒/焙煎芝麻/黑醋)', code: 'Sauce', price: 4.00 }
+            ]},
+            { name: '脆香雞翼', items: [
+                { name: '脆香雞翼 (2件)', code: 'Crispy_Wings_2pc', price: 15.00 }
+            ]},
+            { name: '麥炸雞 (單件)', items: [
+                 { name: '麥炸雞 (原味) (1件)', code: 'Original_Chicken_1pc', price: 22.50 },
+                 { name: '蜜糖BBQ麥炸雞 (1件)', code: 'BBQ_Chicken_1pc', price: 23.50 }
+            ]}
+        ];
+
+
+        let orders = [];
+
+        function createNewOrder(personName) {
+            return {
+                personName: personName, 
+                mainItem: { name: '未選擇', price: 0, isSet: false, isMaxSet: false }, 
+                sideItem: { name: '無', price: 0, code: '' }, 
+                drink: { name: '無', price: 0, code: '' },   
+                extraSides: [] 
+            };
+        }
+        
+        // V4.6 新增: 根據名稱查詢菜單詳細信息
+        function getMenuItemDetails(name) {
+            for (const category in menuData) {
+                const item = menuData[category].find(item => item.name === name);
+                if (item) return item;
+            }
+            return null;
+        }
+
+        function initApp() {
+            loadOrdersFromStorage();
+            
+            document.getElementById('add-order-btn').addEventListener('click', addNewPerson);
+            
+            renderPersonSelect();
+            renderMenu();
+            renderOrders();
+        }
+
+        function renderPersonSelect() {
+            const select = document.getElementById('person-select');
+            select.innerHTML = '';
+            
+            orders.forEach((order, index) => {
+                const option = document.createElement('option');
+                option.value = index; 
+                option.textContent = order.personName; 
+                select.appendChild(option);
+            });
+        }
+        
+        function addNewPerson() {
+            const customName = prompt("請輸入新訂餐人的名字：");
+            
+            if (customName && customName.trim() !== '') {
+                const newName = customName.trim();
+                const newOrderIndex = orders.length;
+                
+                orders.push(createNewOrder(newName));
+                
+                renderPersonSelect();
+                
+                document.getElementById('person-select').value = newOrderIndex;
+                
+                saveOrdersToStorage();
+                renderOrders();
+            } else if (customName !== null) {
+                alert("名字不能為空，新增訂餐人操作取消。");
+            }
+        }
+
+        // 主菜單收合/展開
+        function toggleCategory(titleElement) {
+            const contentElement = titleElement.nextElementSibling;
+            const isExpanded = contentElement.classList.contains('expanded');
+            
+            document.querySelectorAll('.menu-category-content.expanded').forEach(openContent => {
+                if (openContent !== contentElement) { 
+                    openContent.style.maxHeight = openContent.scrollHeight + "px"; 
+                    requestAnimationFrame(() => {
+                        openContent.style.maxHeight = '0';
+                    });
+                    openContent.classList.remove('expanded');
+                    openContent.previousElementSibling.classList.remove('expanded');
+                }
+            });
+
+            if (!isExpanded) {
+                contentElement.classList.add('expanded');
+                titleElement.classList.add('expanded');
+                contentElement.style.maxHeight = contentElement.scrollHeight + "px";
+            } else {
+                contentElement.style.maxHeight = contentElement.scrollHeight + "px";
+                requestAnimationFrame(() => {
+                    contentElement.style.maxHeight = '0';
+                });
+                contentElement.classList.remove('expanded');
+                titleElement.classList.remove('expanded');
+            }
+        }
+        
+        // 子菜單收合/展開
+        function toggleSubCategory(titleElement) {
+            const contentElement = titleElement.nextElementSibling;
+            const isExpanded = contentElement.classList.contains('expanded');
+            
+            if (!isExpanded) {
+                contentElement.classList.add('expanded');
+                titleElement.classList.add('expanded');
+                contentElement.style.maxHeight = contentElement.scrollHeight + "px";
+            } else {
+                contentElement.style.maxHeight = contentElement.scrollHeight + "px";
+                requestAnimationFrame(() => {
+                    contentElement.style.maxHeight = '0';
+                });
+                contentElement.classList.remove('expanded');
+                titleElement.classList.remove('expanded');
+            }
+
+            let parentContent = titleElement.closest('.menu-category-content');
+            if (parentContent) {
+                parentContent.style.maxHeight = parentContent.scrollHeight + "px";
+            }
+        }
+        
+        function renderMenu() {
+            const menuContentDiv = document.getElementById('menu-content');
+            let html = '';
+            
+            for (const category in menuData) {
+                let displayCategory = category.replace(/_/g, ' ');
+                
+                if (menuData[category].length === 0) continue; 
+                
+                html += `<div class="menu-category-container">`;
+                html += `<div class="menu-category-title" onclick="toggleCategory(this)">${displayCategory.toUpperCase()}</div>`;
+                html += `<div class="menu-category-content">`;
+                
+                if (category === 'DRINKS') {
+                    
+                    const drinksMap = menuData[category].reduce((acc, item) => {
+                        if (!acc[item.subCategory]) acc[item.subCategory] = [];
+                        acc[item.subCategory].push(item);
+                        return acc;
+                    }, {});
+
+                    for (const subCat in drinksMap) {
+                        const displayName = subCat.toUpperCase().replace('COFFEE', '咖啡');
+                        
+                        html += `<div class="menu-sub-toggle" onclick="toggleSubCategory(this)">${displayName}</div>`;
+                        html += `<div class="menu-sub-content">`;
+                        
+                        drinksMap[subCat].forEach(item => {
+                            let itemHtml = `<strong>${item.name}</strong>`;
+
+                            if (item.aLaCarte !== null) {
+                                itemHtml += `<small class="price-red-bold">單點: HK$${item.aLaCarte.toFixed(2)}</small>`; 
+                            }
+                            
+                            html += `
+                                <div class="menu-item single-only" 
+                                    onclick="showSelectionModal('${item.name}', ${item.aLaCarte}, ${item.set}, '${item.type}', '${item.code || ''}')">
+                                    ${itemHtml}
+                                </div>
+                            `;
+                        });
+                        
+                        html += `</div>`; 
+                    }
+
+                } else {
+                    
+                    menuData[category].forEach(item => {
+                        const isMainItemCategory = (item.type === 'Burger' || item.type === 'Chicken_Set_Main' || item.type === 'Salad' || item.type === 'Muffin');
+                        const isSetAvailable = item.set !== null && item.set !== 'null';
+                        
+                        const isPriceRedCategory = (item.type === 'Burger' || item.type === 'Chicken_Set_Main' || item.type === 'Salad' || item.type === 'Muffin' || item.type === 'Sides' || item.type === 'Dessert' || item.type === 'HappyMeal' || item.type === 'Chicken_Side' || item.type === 'Side_Alternative'); 
+                        
+                        const priceClass = isPriceRedCategory ? 'price-red-bold' : '';
+                        
+                        let priceDisplay = '';
+                        if (item.aLaCarte !== null) {
+                            priceDisplay += `單點: HK$${item.aLaCarte.toFixed(2)}`;
+                        }
+                        
+                        if (isMainItemCategory && isSetAvailable) {
+                            if (priceDisplay !== '') priceDisplay += ' | ';
+                            priceDisplay += `套餐: HK$${item.set.toFixed(2)} (加大: HK$${(item.set + MAX_SET_COST).toFixed(2)})`;
+                        } else if (item.set !== null) {
+                            if (priceDisplay !== '') priceDisplay += ' | ';
+                            priceDisplay += `套餐: HK$${item.set.toFixed(2)}`;
+                        }
+
+                        let itemHtml = `<strong>${item.name}</strong>`;
+                        
+                        if (priceDisplay !== '') {
+                             itemHtml += `<small class="${priceClass}">${priceDisplay}</small>`;
+                        } else if (item.set === null && item.aLaCarte === null) {
+                             itemHtml += `<small>N/A</small>`;
+                        }
+                        
+                        html += `
+                            <div class="menu-item" 
+                                onclick="showSelectionModal('${item.name}', ${item.aLaCarte}, ${item.set}, '${item.type}', '${item.code || ''}')">
+                                ${itemHtml}
+                            </div>
+                        `;
+                    });
+                }
+                
+                html += `</div></div>`; 
+            }
+
+            menuContentDiv.innerHTML = html;
+        }
+
+        function renderOrders() {
+            const container = document.getElementById('orders-container');
+            let html = '<table><tr><th>#</th><th>Name</th><th>主餐(套餐/單點/加大)</th><th>配餐 (升級/加購)</th><th>飲品 (升級/加購)</th><th>Total</th><th>操作</th></tr>';
+
+            orders.forEach((order, index) => {
+                
+                let extraSidesTotal = order.extraSides.reduce((sum, item) => sum + item.price, 0);
+                const total = order.mainItem.price + order.sideItem.price + order.drink.price + extraSidesTotal;
+                
+                const personName = order.personName || '未知'; 
+                
+                let mainType = order.mainItem.isMaxSet ? 'MaxSet' : 
+                                 (order.mainItem.isSet ? 'Set' : 
+                                 (order.mainItem.name === '未選擇' ? '' : 'A'));
+                
+                let mainItemName = order.mainItem.name;
+                let drinkItemName = order.drink.name;
+                let drinkItemPrice = order.drink.price;
+                
+                // --- 渲染 配餐 (sideItem + extraSides) ---
+                
+                let sideItemDisplay = '';
+                let sideItemPriceDisplay = 0.00; 
+                
+                const isMainOrderEmpty = (order.mainItem.name === '未選擇' || order.mainItem.name === '無');
+                
+                // 檢查是否有套餐主配餐
+                if (order.mainItem.isSet || order.mainItem.isMaxSet) {
+                    
+                    if (order.sideItem.name !== '無') {
+                        sideItemDisplay += order.sideItem.name;
+                        sideItemPriceDisplay += order.sideItem.price; 
+                    }
+                } 
+                
+                // 檢查是否有額外加購
+                if (order.extraSides.length > 0) {
+                    const extraNames = order.extraSides.map(item => item.name).join(' + ');
+                    extraSidesTotal = order.extraSides.reduce((sum, item) => sum + item.price, 0);
+                    
+                    if (sideItemDisplay !== '') {
+                        sideItemDisplay += ' + ';
+                    } 
+                    sideItemDisplay += extraNames;
+                    sideItemPriceDisplay += extraSidesTotal;
+                }
+
+                if (isMainOrderEmpty) {
+                    if (sideItemDisplay !== '') {
+                        sideItemDisplay = `${sideItemDisplay} <span style="color: var(--mcd-red); font-weight: bold;">(HK$ ${sideItemPriceDisplay.toFixed(2)})</span>`;
+                    } else {
+                        sideItemDisplay = `無 <span style="color: #666; font-weight: bold;">(0.00)</span>`;
+                    }
+                } else if (order.mainItem.isSet || order.mainItem.isMaxSet) {
+                    
+                    if (sideItemDisplay !== '') {
+                        const isFree = order.sideItem.price === 0 && order.extraSides.length === 0;
+                        const prefix = (sideItemPriceDisplay > 0) ? '+' : '';
+                        
+                        sideItemDisplay = `${sideItemDisplay} <span style="color: ${sideItemPriceDisplay !== 0 ? 'var(--mcd-red)' : '#666'}; font-weight: bold;">(${isFree ? '免費' : prefix + sideItemPriceDisplay.toFixed(2)})</span>`;
+                    } else {
+                        sideItemDisplay = `無 <span style="color: #666; font-weight: bold;">(0.00)</span>`;
+                    }
+                } else {
+                    
+                    if (sideItemDisplay !== '') {
+                        sideItemDisplay = `${sideItemDisplay} <span style="color: var(--mcd-red); font-weight: bold;">(HK$ ${sideItemPriceDisplay.toFixed(2)})</span>`;
+                    } else {
+                        sideItemDisplay = `無 <span style="color: #666; font-weight: bold;">(0.00)</span>`;
+                    }
+                }
+                
+                // --- 渲染 飲品 (drinkItem) ---
+                
+                let drinkItemDisplay;
+                
+                if (isMainOrderEmpty) {
+                    if (drinkItemPrice > 0) {
+                        drinkItemDisplay = `
+                            ${drinkItemName} 
+                            <span style="color: var(--mcd-red); font-weight: bold;">
+                                (HK$ ${drinkItemPrice.toFixed(2)})
+                            </span>
+                        `;
+                    } else {
+                        drinkItemDisplay = `無 <span style="color: #666; font-weight: bold;">(0.00)</span>`;
+                    }
+                } else if (order.mainItem.isSet || order.mainItem.isMaxSet) {
+                    
+                    const prefix = (drinkItemPrice > 0) ? '+' : '';
+                     drinkItemDisplay = `
+                        ${drinkItemName} 
+                        <span style="color: ${drinkItemPrice !== 0 ? 'var(--mcd-red)' : '#666'}; font-weight: bold;">
+                            (${drinkItemPrice === 0 && drinkItemName !== '無' ? '免費' : (drinkItemName === '無' ? '無' : prefix + drinkItemPrice.toFixed(2))})
+                        </span>
+                    `;
+                } else {
+                    
+                    if (drinkItemPrice > 0) {
+                         drinkItemDisplay = `
+                            ${drinkItemName} 
+                            <span style="color: var(--mcd-red); font-weight: bold;">
+                                (HK$ ${drinkItemPrice.toFixed(2)})
+                            </span>
+                        `;
+                    } else {
+                        drinkItemDisplay = `無 <span style="color: #666; font-weight: bold;">(0.00)</span>`;
+                    }
+                }
+                
+                // V4.6 判斷是否顯示 '轉單點' 按鈕
+                let switchButton = '';
+                if ((order.mainItem.isSet || order.mainItem.isMaxSet) && order.mainItem.name !== '未選擇') {
+                    const details = getMenuItemDetails(order.mainItem.name.replace('Happy Meal: ', '')); // 處理 Happy Meal 的名稱
+                    if (details && details.aLaCarte !== null) {
+                        switchButton = `<button onclick="switchToALaCarte(${index})" style="background-color: #007bff; color: white; margin-left: 5px;">轉單點</button>`;
+                    }
+                }
+
+
+                html += `
+                    <tr id="row-${index}">
+                        <td>${index + 1}</td>
+                        <td style="font-weight: bold;">${personName}</td>
+                        <td>${mainItemName} <span style="font-weight: bold;">(${mainType})</span></td>
+                        <td>${sideItemDisplay}</td>
+                        <td>${drinkItemDisplay}</td>
+                        <td class="subtotal" style="font-weight: bold;">HK$ ${total.toFixed(2)}</td>
+                        <td>
+                            <button onclick="clearOrder(${index})">清空</button>
+                            ${switchButton}
+                            ${index >= INITIAL_NAMES.length ? `<button onclick="deleteOrder(${index})" style="background-color: #f44336; color: white; margin-left: 5px;">刪除</button>` : ''}
+                        </td>
+                    </tr>
+                `;
+            });
+            html += '</table>';
+            container.innerHTML = html;
+            calculateTotal();
+            saveOrdersToStorage(); 
+        }
+
+        function showSelectionModal(name, aLaCartePrice, setPrice, itemType, itemCode) {
+            const personSelect = document.getElementById('person-select');
+            const index = parseInt(personSelect.value); 
+            
+            if (isNaN(index) || index < 0 || index >= orders.length) return alert("請先選擇要點餐的用戶。");
+            
+            const currentOrder = orders[index];
+            const personName = currentOrder.personName || '未知';
+
+            const isSetAvailable = setPrice !== null && setPrice !== 'null';
+            const isMainItemCategory = (itemType === 'Burger' || itemType === 'Chicken_Set_Main' || itemType === 'Salad' || itemType === 'Muffin');
+            
+            // --- 處理非主餐項目 (單點配餐、甜品、飲品) ---
+            if (!isMainItemCategory && itemType !== 'HappyMeal') {
+                if (aLaCartePrice === null) return alert("此項目價格資料不完整，無法點餐。");
+
+                let confirmMessage = `您選擇了 ${name} (HK$${aLaCartePrice.toFixed(2)})，為【${personName}】點餐。`;
+                
+                if (itemType === 'Drink') {
+                    confirmMessage += `\n\n[確定/OK]：將其設為【單點飲品/加購】`;
+                    if (confirm(confirmMessage)) {
+                        const newDrinkName = currentOrder.drink.name === '無' ? name : `${currentOrder.drink.name} + ${name}`;
+                        currentOrder.drink = { name: newDrinkName, price: currentOrder.drink.price + aLaCartePrice, code: '' };
+                        if (currentOrder.mainItem.name === '未選擇') currentOrder.mainItem = { name: '無', price: 0, isSet: false, isMaxSet: false }; 
+                    } else {
+                        return;
+                    }
+                } else if (itemType === 'Dessert' || itemType === 'Sides' || itemType === 'Chicken_Side') {
+                    confirmMessage += `\n\n[確定/OK]：將其設為【單點加購/配餐】`;
+                    
+                    if (confirm(confirmMessage)) {
+                         currentOrder.extraSides.push({ name: name, price: aLaCartePrice, code: itemCode || '' });
+                         if (currentOrder.mainItem.name === '未選擇') currentOrder.mainItem = { name: '無', price: 0, isSet: false, isMaxSet: false };
+                    } else {
+                        return;
+                    }
+                }
+            } 
+            // --- 處理 Happy Meals (V4.7 修正) ---
+            else if (itemType === 'HappyMeal' && setPrice !== null) {
+                
+                let mainItemPrompt = `
+【${personName} - 選擇 Happy Meal】\n
+您選擇了: ${name} (HK$${setPrice.toFixed(2)})\n
+請注意：Happy Meal 包含一個免費配餐和一個指定飲品。\n
+[確定/OK]：將其設為【${personName}】的 Happy Meal 套餐，並進入配餐選擇。
+                `.trim();
+
+                if (confirm(mainItemPrompt)) {
+                    
+                    // 1. 清空並設置主餐
+                    currentOrder.mainItem = { name: `Happy Meal: ${name}`, price: setPrice, isSet: true, isMaxSet: false };
+                    currentOrder.drink = { name: '無', price: 0, code: '' }; 
+                    currentOrder.sideItem = { name: '無', price: 0, code: '' }; 
+                    currentOrder.extraSides = [];
+                    
+                    // 2. 調用配餐選擇流程 (使用標準薯條 M 作為預設)
+                    const sideItemDefaultName = '標準薯條 M';
+                    const sideItemDefaultCode = 'Fries_M';
+                    
+                    // 傳遞 isHappyMeal = true，讓 selectSide 完成後不自動進入 selectDrink
+                    selectSide(index, sideItemDefaultName, sideItemDefaultCode, true); 
+                    
+                    return; // selectSide 會負責調用 renderOrders
+                }
+            } 
+            // --- 處理一般主餐 (Burger/Chicken_Set_Main/Salad/Muffin) ---
+            else if (isMainItemCategory) {
+                
+                let choice; 
+                let choiceNum;
+
+                const alacarteDisplay = aLaCartePrice !== null ? `1. 單點 (A): HK$${aLaCartePrice.toFixed(2)}` : '';
+                const setDisplay = isSetAvailable ? `2. 套餐 (Set): HK$${setPrice.toFixed(2)}` : '';
+                const maxSetDisplay = isSetAvailable ? `3. 加大套餐 (MaxSet): HK$${(setPrice + MAX_SET_COST).toFixed(2)}` : '';
+                
+                let mainItemPrompt = `
+【${personName} - 選擇主餐類型】\n
+您選擇了: ${name}\n
+${alacarteDisplay}\n
+${setDisplay}\n
+${maxSetDisplay}\n
+請輸入對應的數字 (1, 2, 或 3)：
+                `.trim();
+
+                while (true) {
+                    choice = prompt(mainItemPrompt);
+                    if (choice === null) return; // 按了取消
+                    
+                    choiceNum = parseInt(choice.trim());
+                    
+                    if (choiceNum === 1 && aLaCartePrice !== null) {
+                        choice = 'A'; break;
+                    } else if (choiceNum === 2 && isSetAvailable) {
+                        choice = 'Set'; break;
+                    } else if (choiceNum === 3 && isSetAvailable) {
+                        choice = 'MaxSet'; break;
+                    } else if (!isSetAvailable && choiceNum === 1 && aLaCartePrice !== null) {
+                        choice = 'A'; break; // 只有單點時，1 仍然有效
+                    }
+                    
+                    alert('輸入錯誤，請輸入 1, 2, 或 3 (如果套餐選項不存在，只能選 1)。');
+                }
+                
+                let finalMainPrice;
+                let isSet = false;
+                let isMaxSet = false;
+
+                if (choice === 'Set') {
+                    finalMainPrice = setPrice;
+                    isSet = true;
+                } else if (choice === 'MaxSet') {
+                    finalMainPrice = setPrice + MAX_SET_COST;
+                    isMaxSet = true;
+                } else { // 'A'
+                    finalMainPrice = aLaCartePrice;
+                }
+
+                // 清空並設置主餐
+                currentOrder.mainItem = { name: name, price: finalMainPrice, isSet: isSet, isMaxSet: isMaxSet };
+                currentOrder.drink = { name: '無', price: 0, code: '' }; 
+                currentOrder.sideItem = { name: '無', price: 0, code: '' }; 
+                currentOrder.extraSides = [];
+                
+                if (isSet || isMaxSet) {
+                    
+                    const sideItemDefaultCode = isMaxSet ? 'Fries_L' : 'Fries_M';
+                    const sideItemDefaultName = isMaxSet ? '大薯條 L' : '標準薯條 M';
+                    
+                    // 1. 配餐替換/升級/加購 (數字化流程)
+                    // 一般套餐：isHappyMeal = false (或不傳遞)
+                    selectSide(index, sideItemDefaultName, sideItemDefaultCode);
+
+                    // 2. 飲品升級/加購 (selectSide 會自動調用 selectDrink)
+                    
+                    return; // selectSide 會負責調用 renderOrders
+                }
+            }
+            
+            // 如果是單點或單點加購
+            renderOrders();
+        }
+
+        // V4.6 新增: 套餐轉單點功能
+        function switchToALaCarte(index) {
+            const order = orders[index];
+            // 處理 Happy Meal 的名稱，以便在菜單數據中找到原始條目
+            const mainItemSearchName = order.mainItem.name.replace('Happy Meal: ', ''); 
+            const details = getMenuItemDetails(mainItemSearchName);
+            
+            if (!details || details.aLaCarte === null) {
+                alert(`${order.mainItem.name} 沒有單點價格，無法變更為單點。`);
+                return;
+            }
+
+            if (!confirm(`確定要將【${order.personName} - ${order.mainItem.name}】變更為單點嗎？所有配餐和飲品將會被清除！`)) {
+                return;
+            }
+
+            // 執行轉換
+            order.mainItem.name = mainItemSearchName; // 恢復原始名稱
+            order.mainItem.price = details.aLaCarte;
+            order.mainItem.isSet = false;
+            order.mainItem.isMaxSet = false;
+
+            // 清空套餐相關的所有項目
+            order.sideItem = { name: '無', price: 0, code: '' };
+            order.drink = { name: '無', price: 0, code: '' };
+            order.extraSides = [];
+
+            renderOrders();
+            alert(`【${order.personName} - ${mainItemSearchName}】已成功變更為單點 (HK$${details.aLaCarte.toFixed(2)})。`);
+        }
+
+        // V4.1 修訂: 數字化飲品升級/加購流程
+        function selectDrink(index) {
+            const currentOrder = orders[index];
+            const personName = currentOrder.personName;
+            const isSet = currentOrder.mainItem.isSet || currentOrder.mainItem.isMaxSet;
+            
+            if (!isSet) return; // 確保只在套餐模式下運行
+            
+            let continueAdding = true;
+
+            while (continueAdding) {
+                
+                // V4.1: 檢查是否已選擇基本飲品
+                let baseDrinkSelected = currentOrder.drink.name !== '無';
+                let baseDrinkPrompt = baseDrinkSelected ? 
+                    `目前飲品: ${currentOrder.drink.name} (升級費用: +HK$${currentOrder.drink.price.toFixed(2)})` :
+                    `目前未選擇基本飲品 (免費)。`;
+
+                // 階段一：選擇飲品類別
+                let categoryPrompt = `【${personName} - 飲品選擇/升級/加購】\n\n${baseDrinkPrompt}\n\n`;
+                
+                if (!baseDrinkSelected) {
+                     categoryPrompt += `**請務必先選擇一個免費的基本飲品 (如可口可樂)，或按 'Y' 跳過**\n\n`;
+                }
+
+                DRINK_CATEGORIES.forEach((cat, idx) => {
+                    categoryPrompt += `${idx + 1}. ${cat.name}\n`;
+                });
+                categoryPrompt += `\n請輸入類別編號 (或輸入 Y 結束本次操作)：`;
+                
+                let categoryInput = prompt(categoryPrompt);
+                
+                // V4.1: 允許 Y 結束，即使未選擇任何飲品
+                if (categoryInput === null || categoryInput.toUpperCase() === 'Y') {
+                    continueAdding = false;
+                    break;
+                }
+                
+                let categoryIndex = parseInt(categoryInput) - 1;
+                
+                if (isNaN(categoryIndex) || categoryIndex < 0 || categoryIndex >= DRINK_CATEGORIES.length) {
+                    alert('類別編號無效，請重新輸入。');
+                    continue;
+                }
+
+                const selectedCategory = DRINK_CATEGORIES[categoryIndex];
+                
+                // 階段二：選擇具體飲品
+                let itemPrompt = `【${personName} - 選擇 ${selectedCategory.name}】\n\n`;
+                selectedCategory.items.forEach((item, idx) => {
+                    itemPrompt += `${idx + 1}. ${item.name} (單點: HK$${item.aLaCarte.toFixed(2)})\n`;
+                });
+                itemPrompt += `\n請輸入飲品編號 (或輸入 R 返回上級)：`;
+                
+                let itemInput = prompt(itemPrompt);
+                if (itemInput === null) return; 
+                if (itemInput.toUpperCase() === 'R') continue;
+
+                let itemIndex = parseInt(itemInput) - 1;
+
+                if (isNaN(itemIndex) || itemIndex < 0 || itemIndex >= selectedCategory.items.length) {
+                    alert('飲品編號無效，請返回上級。');
+                    continue;
+                }
+                
+                const selectedItem = selectedCategory.items[itemIndex];
+
+                // 處理升級邏輯
+                let finalCost = 0; 
+                let standardValue = STANDARD_DRINK_VALUE; 
+                finalCost = selectedItem.aLaCarte - standardValue;
+                if (finalCost < 0) finalCost = 0;
+                
+                // V4.1: 檢查是否為首次設定套餐免費飲品
+                if (!baseDrinkSelected) {
+                    // 首次選擇：將其設為免費基礎飲品 (只需支付升級費用)
+                    currentOrder.drink = { name: selectedItem.name, price: finalCost, code: selectedItem.code };
+                    alert(`成功設定基本飲品 ${selectedItem.name}。本次升級費用: +HK$${finalCost.toFixed(2)}。`);
+                    // 首次選擇後，強制退出 loop，因為基本飲品已定。如果需要額外加購，用戶需要再次點擊菜單。
+                    continueAdding = false;
+                } else {
+                    // 後續加購：按單點價加到總價中
+                    currentOrder.drink.name += ` + ${selectedItem.name}`;
+                    currentOrder.drink.price += selectedItem.aLaCarte; 
+                    alert(`成功加購 ${selectedItem.name}。本次加購費用: +HK$${selectedItem.aLaCarte.toFixed(2)}。`);
+                }
+            }
+            renderOrders();
+        }
+
+        // V4.7 修正: 增加 isHappyMeal 參數，Happy Meal 流程完成後不再自動進入 selectDrink
+        function selectSide(index, defaultName, defaultCode, isHappyMeal = false) {
+            const currentOrder = orders[index];
+            const personName = currentOrder.personName;
+            const isSet = currentOrder.mainItem.isSet || currentOrder.mainItem.isMaxSet;
+
+            if (!isSet) return; 
+            
+            // V4.5: 檢查並顯示當前配餐狀態
+            let baseSideSelected = currentOrder.sideItem.name !== '無';
+            let currentSideDisplay = baseSideSelected ? currentOrder.sideItem.name : defaultName;
+            const currentUpgradeFee = isNaN(currentOrder.sideItem.price) ? 0.00 : currentOrder.sideItem.price;
+
+            // 階段一：套餐配餐替換 (薯條 vs 粟米杯)
+            let sideChoice;
+
+            const sideMessage = `
+【${personName} - 套餐配餐選擇/替換】\n
+套餐已包含一個**免費配餐**。
+目前選擇: ${currentSideDisplay} (升級費: +HK$${currentUpgradeFee.toFixed(2)})
+
+請選擇操作：\n
+1. 確認 ${defaultName} 作為配餐，並進入【升級/加購】流程。\n
+2. 替換為 粒粒粟米杯 (免費，並進入【加購】流程)。\n
+3. 取消 (不進行任何配餐替換/升級/加購)
+            `.trim();
+            
+            while (true) {
+                sideChoice = prompt(sideMessage);
+                if (sideChoice === null || sideChoice.toUpperCase() === '3' || sideChoice.toUpperCase() === 'C') {
+                    // 如果 Happy Meal 在這裏取消，仍然需要渲染一次
+                    if (isHappyMeal) renderOrders(); 
+                    return;
+                }
+                
+                const choiceNum = parseInt(sideChoice.trim());
+                
+                if (choiceNum === 2) {
+                    // 替換為粟米杯 (免費)
+                    currentOrder.sideItem = { name: '粒粒粟米杯', price: 0.00, code: 'Corn' }; 
+                    alert(`${personName} 的配餐已替換為 粒粒粟米杯 (免費)。即將進入加購流程...`);
+                    baseSideSelected = true;
+                    break; 
+                } else if (choiceNum === 1) {
+                    // 選擇薯條/進入升級加購流程
+                    
+                    // V4.1: 如果未選擇，則將其設定為預設薯條
+                    if (!baseSideSelected) {
+                        currentOrder.sideItem = { name: defaultName, price: 0, code: defaultCode };
+                        baseSideSelected = true;
+                    }
+                    
+                    break;
+                } else {
+                    alert('輸入錯誤，請輸入 1, 2, 或 3。');
+                }
+            }
+
+            // --- 階段二：升級/額外加購 (只有在選擇了基本配餐後才能進行升級) ---
+            
+            if (!baseSideSelected) {
+                // 如果用戶在第一階段沒有選擇 1 或 2，這裡會跳過加購
+                if (isHappyMeal) renderOrders();
+                return;
+            }
+            
+            let continueAdding = true;
+
+            while (continueAdding) {
+                let upgradePrompt = `【${personName} - 配餐升級/加購】\n\n`;
+                upgradePrompt += `套餐主配餐: ${currentOrder.sideItem.name} (升級費: +HK$${currentOrder.sideItem.price.toFixed(2)})`;
+                if (currentOrder.extraSides.length > 0) {
+                    upgradePrompt += `\n額外加購: ${currentOrder.extraSides.map(s => s.name).join(', ')}`;
+                }
+                
+                // 1. 薯條升級
+                let friesCost;
+                
+                if (currentOrder.sideItem.code === 'Fries_M') {
+                    friesCost = LARGE_SIDE_VALUE - STANDARD_SIDE_VALUE; // 5.00
+                } else if (currentOrder.sideItem.code === 'Corn') {
+                    friesCost = LARGE_SIDE_VALUE - CORN_PRICE_VALUE; // 5.00
+                } else {
+                    friesCost = 0.00; // Fries_L 或非薯條/粟米杯
+                }
+                
+                if (friesCost < 0) friesCost = 0.00;
+                
+                upgradePrompt += `\n\n請選擇升級/加購類別：\n`;
+                
+                // 顯示薯條升級選項 (編號 1)
+                const isFriesUpgradeAvailable = (currentOrder.sideItem.code === 'Fries_M' || currentOrder.sideItem.code === 'Corn');
+                if (isFriesUpgradeAvailable) {
+                    upgradePrompt += `1. 薯條升級至 L (費用: +HK$${friesCost.toFixed(2)})\n`;
+                }
+
+                // 顯示其他加購選項
+                SIDE_CATEGORIES.forEach((cat, idx) => {
+                    // 數字從 2 或 1 開始，取決於薯條升級是否可選
+                    let num = isFriesUpgradeAvailable ? idx + 2 : idx + 1;
+                    upgradePrompt += `${num}. ${cat.name}\n`;
+                });
+                upgradePrompt += `\n請輸入編號 (或輸入 Y 結束本次加購)：`;
+
+                let upgradeInput = prompt(upgradePrompt);
+                if (upgradeInput === null) return; 
+                if (upgradeInput.toUpperCase() === 'Y') {
+                    continueAdding = false;
+                    break;
+                }
+
+                let upgradeNum = parseInt(upgradeInput);
+                
+                
+                if (isFriesUpgradeAvailable && upgradeNum === 1) {
+                    // 薯條升級至 L
+                    
+                    let baseValue = currentOrder.sideItem.code === 'Corn' ? CORN_PRICE_VALUE : STANDARD_SIDE_VALUE;
+                    let finalPrice = LARGE_SIDE_VALUE - baseValue;
+                    if (finalPrice < 0) finalPrice = 0.00;
+                    
+                    currentOrder.sideItem = { name: '大薯條 L', price: finalPrice, code: 'Fries_L' };
+                    alert(`配餐已升級至 大薯條 L。升級費用: +HK$${finalPrice.toFixed(2)}。`);
+                    
+                } else if (upgradeNum >= (isFriesUpgradeAvailable ? 2 : 1) && upgradeNum <= SIDE_CATEGORIES.length + (isFriesUpgradeAvailable ? 1 : 0)) {
+                    // 額外加購類別
+                    const categoryIndex = isFriesUpgradeAvailable ? upgradeNum - 2 : upgradeNum - 1;
+                    const selectedCategory = SIDE_CATEGORIES[categoryIndex];
+                    
+                    let itemPrompt = `【${personName} - 選擇加購 ${selectedCategory.name}】\n\n`;
+                    selectedCategory.items.forEach((item, idx) => {
+                         let priceDisplay = item.price ? `(HK$${item.price.toFixed(2)})` : '';
+                         itemPrompt += `${idx + 1}. ${item.name} ${priceDisplay}\n`;
+                    });
+                    itemPrompt += `\n請輸入編號 (或輸入 R 返回上級)：`;
+                    
+                    let itemInput = prompt(itemPrompt);
+                    if (itemInput === null) return;
+                    if (itemInput.toUpperCase() === 'R') continue;
+
+                    let itemIndex = parseInt(itemInput) - 1;
+                    
+                    if (isNaN(itemIndex) || itemIndex < 0 || itemIndex >= selectedCategory.items.length) {
+                         alert('編號無效，請返回上級。');
+                         continue;
+                    }
+                    
+                    const selectedItem = selectedCategory.items[itemIndex];
+                    if (selectedItem.price === undefined) {
+                        alert(`${selectedItem.name} 價格數據缺失或需要手動調整名稱。`);
+                        continue;
+                    }
+                    
+                    // 執行加購
+                    currentOrder.extraSides.push({ name: selectedItem.name, price: selectedItem.price, code: selectedItem.code });
+                    alert(`成功加購 ${selectedItem.name}。費用: +HK$${selectedItem.price.toFixed(2)}。`);
+
+                } else {
+                    alert('輸入錯誤，請重新輸入。');
+                }
+            }
+            
+            // V4.7 修正: Happy Meal 流程到此結束
+            if (isHappyMeal) {
+                renderOrders();
+                alert(`Happy Meal 配餐選擇已完成。請注意，飲品選擇功能將在下一個版本開放。`);
+                return;
+            }
+            
+            // --- 一般套餐進入飲品流程 (原邏輯) ---
+            selectDrink(index);
+        }
+        
+        function clearOrder(index) {
+            const personName = orders[index].personName; 
+            
+            if (confirm(`確定要清空 ${personName} 的所有訂餐內容嗎？`)) {
+                orders[index] = createNewOrder(personName);
+                renderOrders();
+            }
+        }
+        
+        function deleteOrder(index) {
+            if (index < INITIAL_NAMES.length) {
+                alert("此為固定訂餐人，不能刪除，只能清空。");
+                return;
+            }
+            if (confirm(`確定要刪除 ${orders[index].personName} 的訂單嗎？`)) {
+                orders.splice(index, 1);
+                
+                document.getElementById('person-select').value = 0; 
+
+                renderPersonSelect();
+                renderOrders();
+            }
+        }
+
+
+        function calculateTotal() {
+            const totalPriceSpan = document.getElementById('total-price');
+            
+            const grandTotal = orders.reduce((sum, order) => {
+                let extraSidesTotal = order.extraSides.reduce((esSum, item) => esSum + item.price, 0);
+                const subtotal = order.mainItem.price + order.sideItem.price + order.drink.price + extraSidesTotal;
+                return sum + subtotal;
+            }, 0);
+
+            totalPriceSpan.textContent = `HK$ ${grandTotal.toFixed(2)}`;
+        }
+
+        function saveOrdersToStorage() {
+            try {
+                const dataToSave = {
+                    orders: orders,
+                };
+                localStorage.setItem('mcdonaldsGroupOrder', JSON.stringify(dataToSave));
+            } catch (e) {
+                // 如果 localStorage 存儲失敗 (如隱身模式)，捕獲錯誤但程序繼續運行
+                console.warn("無法儲存訂單到 localStorage:", e);
+            }
+        }
+
+        // V4.4 健壯性修正: 增加 try...catch 處理 localStorage 讀取錯誤
+        function loadOrdersFromStorage() {
+            const savedData = localStorage.getItem('mcdonaldsGroupOrder');
+            
+            if (savedData) {
+                try {
+                    const data = JSON.parse(savedData);
+                    orders = data.orders || [];
+                    
+                    if (orders.length < INITIAL_NAMES.length) throw new Error("Saved orders too short.");
+                    
+                    orders.forEach(order => {
+                        if (!order.extraSides) order.extraSides = [];
+                        if (!order.drink) order.drink = { name: '無', price: 0, code: '' }; 
+                        if (!order.sideItem) order.sideItem = { name: '無', price: 0, code: '' };
+                        if (order.mainItem && order.mainItem.isMaxSet === undefined) order.mainItem.isMaxSet = false; 
+                        
+                         // 數據兼容性檢查 (從舊版本 'Corn_Cup' 轉換為 'Corn')
+                         if (order.sideItem.code === 'Corn_Cup') {
+                            order.sideItem.code = 'Corn';
+                            order.sideItem.name = '粒粒粟米杯';
+                         }
+                        
+                        // 處理舊版數據中將單點加入 sideItem 的情況
+                        if (order.mainItem.name === '無' && order.sideItem.price > 0 && order.sideItem.name !== '無' && order.extraSides.length === 0) {
+                            const sideItemNameBefore = order.sideItem.name;
+                            const sideItemPriceBefore = order.sideItem.price;
+
+                            if (sideItemNameBefore.includes('+')) {
+                                sideItemNameBefore.split(' + ').forEach(name => {
+                                    order.extraSides.push({ name: name.trim(), price: 0, code: '' }); 
+                                });
+                                order.extraSides[0].price = sideItemPriceBefore; 
+                            } else {
+                                order.extraSides.push({ name: sideItemNameBefore, price: sideItemPriceBefore, code: '' });
+                            }
+                            order.sideItem = { name: '無', price: 0, code: '' }; 
+                        }
+                        
+                        // 修正 Happy Meal 名稱，確保轉單點功能適用
+                        if (order.mainItem.name.startsWith('Happy Meal: ') && order.mainItem.isSet === false) {
+                            order.mainItem.name = order.mainItem.name.replace('Happy Meal: ', '');
+                        }
+                    });
+                    
+                    for(let i = 0; i < INITIAL_NAMES.length; i++) {
+                        if (orders[i]) {
+                             orders[i].personName = INITIAL_NAMES[i];
+                        }
+                    }
+                    
+                    return;
+                } catch (e) {
+                    console.error("載入訂單失敗或數據損壞，將重新初始化。", e);
+                }
+            }
+            
+            orders = INITIAL_NAMES.map(name => createNewOrder(name));
+        }
+
+        document.addEventListener('DOMContentLoaded', initApp);
+    </script>
+</body>
+</html>
